@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Файловый менеджер</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #000000;
+            color: #00ff00;
+            cursor: url('cr.png'), auto;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+.zelenida {
+    flex-grow: 1;
+    overflow-y: auto;
+    padding: 15px;
+    background-color: rgba(0, 20, 0, 0.3);
+    border: 1px solid #00ff00;
+    border-radius: 0;
+    box-shadow: 0 0 15px rgba(0, 255, 0, 0.3);
+    margin: 15px auto; 
+    width: 50%; 
+    height: 400px;
+    background-color: #0a0a0a;
+}
+        input[type="text"] {
+            width: 95%;
+            padding: 12px;
+            border-radius: 4px;
+            border: 1px solid #00ff00;
+            margin-bottom: 10px;
+            background-color: #000000;
+        }
+        .file-item {
+            padding: 10px;
+            border: 1px solid #00ff00;
+            margin: 5px 0;
+            border-radius: 4px;
+            background: #000000;
+            cursor: pointer;
+        }
+        .file-item:hover {
+            background: #0a0a0a;
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="zelenida">
+     <h1>FILE MANINENDGERDADADADA</h1>
+        <input type="text" id="search" placeholder="Поиск файлов...">
+        <div id="file-list">
+            <div class="file-item" data-url="/t.html">t.html (html)</div>
+            <div class="file-item" data-url="/top_filmov_kotorye_stoit_posmotret.html">top_filmov_kotorye_stoit_posmotret.html (html)</div>
+            <div class="file-item" data-url="/sestlokalsint.js">sestlokalsint.js (java skript)</div>
+            <div class="file-item" data-url="https://example.com/file3.docx">Файл 3 (DOCX)</div>
+            <div class="file-item" data-url="https://example.com/file4.mp4">Файл 4 (MP4)</div>
+            <div class="file-item" data-url="https://example.com/file5.zip">Файл 5 (ZIP)</div>
+        </div>
+    </div>
+
+    <script>
+        const searchInput = document.getElementById('search');
+        const fileList = document.getElementById('file-list');
+        const fileItems = document.querySelectorAll('.file-item');
+
+        searchInput.addEventListener('input', function() {
+            const searchTerm = this.value.toLowerCase();
+            fileItems.forEach(item => {
+                const fileName = item.textContent.toLowerCase();
+                if (fileName.includes(searchTerm)) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        });
+
+        fileItems.forEach(item => {
+            item.addEventListener('click', () => {
+                window.open(item.getAttribute('data-url'), '_blank');
+            });
+        });
+    </script>
+    
+</body>
+</html>
